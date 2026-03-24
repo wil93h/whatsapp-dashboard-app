@@ -1,17 +1,14 @@
 FROM node:20-alpine
 
-# instalar pnpm
 RUN npm install -g pnpm
 
 WORKDIR /app
 
-# copiar dependencias
-COPY comment/package.json pnpm-lock.yaml* ./
+# copiar todo el proyecto de una vez
+COPY comment_charts .
 
+# instalar deps DESPUÉS de copiar todo
 RUN pnpm install
-
-# copiar el resto
-COPY . .
 
 EXPOSE 5173
 
