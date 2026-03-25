@@ -30,15 +30,30 @@ class MessageRepository:
 
     def get_sentiments(self):
         pipeline = [
-            {"$group": {"_id": "$sentimiento", "count": {"$sum": 1}}}
+            {"$match": {"sentimiento": {"$exists": True, "$ne": None}}},
+            {"$group": {"_id": "$sentimiento", "total": {"$sum": 1}}}
         ]
-        return list(self.collection.aggregate(pipeline))
+
+        result = list(self.collection.aggregate(pipeline))
+        print("🚀 ~ result:", result)
+        print("-----")
+        return [
+            {"name": item["_id"], "value": item["total"]}
+            for item in result
+        ]
 
     def get_themes(self):
         pipeline = [
-            {"$group": {"_id": "$tema", "count": {"$sum": 1}}}
+            {"$match": {"tema": {"$exists": True, "$ne": None}}},
+            {"$group": {"_id": "$tema", "total": {"$sum": 1}}}
         ]
-        return list(self.collection.aggregate(pipeline))
+
+        result = list(self.collection.aggregate(pipeline))
+
+        return [
+            {"name": item["_id"], "value": item["total"]}
+            for item in result
+        ]
 
     def get_recent(self):
         return list(self.collection.find().sort("timestamp", -1).limit(10))
