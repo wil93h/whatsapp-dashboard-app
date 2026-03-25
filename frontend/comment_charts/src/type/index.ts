@@ -19,5 +19,4 @@ export interface Message {
 export interface DashboardData {
   sentiments: Sentiment[];
   topics: Topic[];
-  messages: Message[];
 }

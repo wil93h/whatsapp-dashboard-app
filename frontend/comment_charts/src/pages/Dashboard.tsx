@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { DashboardData } from "../types";
+import type { DashboardData } from "../type";
 import { getDashboardData } from "../services/api";
 
 import SentimentChart from "../components/SentimentChart";
@@ -8,18 +8,16 @@ import MessagesFeed from "../components/MessagesFeed";
 
 export default function Dashboard() {
   const [data, setData] = useState<DashboardData | null>(null);
-
+  const load = async () => {
+    try {
+      const result = await getDashboardData();
+      console.log("🚀 ~ load ~ result:", result)
+      setData(result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    const load = async () => {
-      try {
-        const result = await getDashboardData();
-        console.log("🚀 ~ load ~ result:", result)
-        setData(result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     load();
   }, []);
 

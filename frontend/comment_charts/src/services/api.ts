@@ -5,7 +5,7 @@ export const getDashboardData = async () => {
   const [sentimentsRes, topicsRes, messagesRes] = await Promise.all([
     fetch(`${API_URL}/api/sentiments`),
     fetch(`${API_URL}/api/themes`),
-    // fetch(`${API_URL}/api/messages`),
+    fetch(`${API_URL}/api/messages`),
   ]);
 
   if (!sentimentsRes.ok || !topicsRes.ok || !messagesRes.ok) {

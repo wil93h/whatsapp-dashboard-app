@@ -36,7 +36,6 @@ class MessageRepository:
 
         result = list(self.collection.aggregate(pipeline))
         print("🚀 ~ result:", result)
-        print("-----")
         return [
             {"name": item["_id"], "value": item["total"]}
             for item in result
@@ -56,4 +55,9 @@ class MessageRepository:
         ]
 
     def get_recent(self):
-        return list(self.collection.find().sort("timestamp", -1).limit(10))
+        messages = list(self.collection.find().sort("timestamp", -1).limit(10))
+
+        for msg in messages:
+            msg["_id"] = str(msg["_id"]) 
+
+        return messages
