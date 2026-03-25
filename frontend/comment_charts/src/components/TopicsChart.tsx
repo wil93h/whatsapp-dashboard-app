@@ -10,11 +10,11 @@ import {
 
 export default function TopicsChart({ data }: any) {
   return (
-    <div className="bg-white p-4 rounded shadow w-full h-[350px]">
-      <h2 className="mb-4 font-bold">Temas más mencionados</h2>
+    <div className="bg-white p-4 rounded shadow w-full">
+      <h2 className="mb-4 font-bold">Temas más mencionados!</h2>
 
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={data || []}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />

@@ -24,7 +24,7 @@ export default function Dashboard() {
   if (!data) return <p className="p-6">Cargando...</p>;
 
   return (
-    <div className="p-6 space-y-6 bg-gray-100 min-h-screen">
+    <div className="p-6 space-y-6 bg-gray-100 min-h-screen gap-10">
       <h1 className="text-2xl font-bold">Dashboard de Sentimientos</h1>
 
       <div className="grid md:grid-cols-2 gap-6">
