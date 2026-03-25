@@ -22,15 +22,14 @@ services:
     restart: always
 
   frontend:
-    build: ../frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
     ports:
       - "5173:5173"
-    volumes:
-      - ../frontend/comment_charts:/app
-      - /app/node_modules
     working_dir: /app
     environment:
-      - VITE_API_URL=http://backend:8000
+      - VITE_API_URL=http://localhost:8000
     depends_on:
       - backend
       
