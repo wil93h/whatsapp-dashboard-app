@@ -23,7 +23,6 @@ Asegúrate de tener Docker instalado en tu máquina.
 
 ```bash
 cd backend
-```bash
 echo "GOOGLE_API_KEY=tu_api_key_de_gemini" >> .env
 echo "MONGODB_URI=mongodb://mongo:27017" >> .env
 cd ..
