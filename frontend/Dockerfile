@@ -8,7 +8,7 @@ COPY comment_charts/package.json ./
 
 RUN pnpm install
 
-COPY comment_charts /app
+COPY comment_charts/ /app
 
 EXPOSE 5173
 
